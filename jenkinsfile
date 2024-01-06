@@ -3,27 +3,29 @@ pipeline {
 
     stages {
         stage('Build & Push to Dev') {
-            when {
-                branch 'dev'
-            }
             steps {
                 script {
-                    echo 'Building and pushing to dev Docker repository...'
-                    sh 'docker build -t sivasankaran64/reactappdev/devapp:latest .'
-                    sh 'docker push sivasankaran64/reactappdev/devapp:latest'
+                    if (env.BRANCH_NAME == 'dev') {
+                        echo 'Building and pushing to dev Docker repository...'
+                        sh 'docker build -t sivasankaran64/reactappdev/devapp:latest .'
+                        sh 'docker push sivasankaran64/reactappdev/devapp:latest'
+                    } else {
+                        echo 'Skipping build for branch other than dev.'
+                    }
                 }
             }
         }
 
         stage('Build & Push to Prod') {
-            when {
-                branch "master"
-            }
             steps {
                 script {
-                    echo 'Building and pushing to prod Docker repository...'
-                    sh 'docker build -t sivasankaran64/reactappprod/prodapp:latest .'
-                    sh 'docker push sivasankaran64/reactappprod/prodapp:latest'
+                    if (env.BRANCH_NAME == 'master') {
+                        echo 'Building and pushing to prod Docker repository...'
+                        sh 'docker build -t sivasankaran64/reactappprod/prodapp:latest .'
+                        sh 'docker push sivasankaran64/reactappprod/prodapp:latest'
+                    } else {
+                        echo 'Skipping build for branch other than master.'
+                    }
                 }
             }
         }
