@@ -20,10 +20,11 @@ pipeline {
         stage('Build & Push to Prod') {
             steps {
                 script {
-                    if (BRANCH_NAME == 'origin/master') {
+                    if (GIT_BRANCH == 'origin/master') {
                         echo 'Building and pushing to prod Docker repository...'
-                        sh 'docker build -t sivasankaran64/reactappprod/prodapp:latest .'
-                        sh 'docker push sivasankaran64/reactappprod/prodapp:latest'
+                        sh 'docker build -t sivasankaran64/reactappprod:latest .'
+                        sh 'docker login -u sivasankaran64 -p dckr_pat_Qx9v9hqgyyV5kx-rN1V_0kPNYSI'
+                        sh 'docker push sivasankaran64/reactappprod:latest'
                     } else {
                         echo 'Skipping build for branch other than master.'
                     }
