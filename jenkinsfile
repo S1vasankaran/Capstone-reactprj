@@ -8,10 +8,9 @@ pipeline {
             }
             steps {
                 script {
-                    // Your build steps for the dev branch
                     echo 'Building and pushing to dev Docker repository...'
-                    // Example: sh 'docker build -t devapp:latest .'
-                    // Example: sh 'docker push sivasankaran64/reactappdev/devapp:latest'
+                    sh 'docker build -t sivasankaran64/reactappdev/devapp:latest .'
+                    sh 'docker push sivasankaran64/reactappdev/devapp:latest'
                 }
             }
         }
@@ -22,10 +21,9 @@ pipeline {
             }
             steps {
                 script {
-                    // Your build steps for the master branch
                     echo 'Building and pushing to prod Docker repository...'
-                    // Example: sh 'docker build -t prodapp:latest .'
-                    // Example: sh 'docker push sivasankaran64/reactappprod/prodapp:latest'
+                    sh 'docker build -t sivasankaran64/reactappprod/prodapp:latest .'
+                    sh 'docker push sivasankaran64/reactappprod/prodapp:latest'
                 }
             }
         }
