@@ -8,6 +8,7 @@ pipeline {
                     if (GIT_BRANCH == 'origin/dev') {
                         echo 'Building and pushing to dev Docker repository...'
                         sh 'docker build -t sivasankaran64/reactappdev/devapp:latest .'
+                        sh 'docker login -u sivasankaran64 -p dckr_pat_Qx9v9hqgyyV5kx-rN1V_0kPNYSI'
                         sh 'docker push sivasankaran64/reactappdev/devapp:latest'
                     } else {
                         echo 'Skipping build for branch other than dev.'
