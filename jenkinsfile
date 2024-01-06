@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build & Push to Dev') {
+            when {
+                changeset "dev"
+            }
+            steps {
+                script {
+                    // Your build steps for the dev branch
+                    echo 'Building and pushing to dev Docker repository...'
+                    // Example: sh 'docker build -t devapp:latest .'
+                    // Example: sh 'docker push sivasankaran64/reactappdev/devapp:latest'
+                }
+            }
+        }
+
+        stage('Build & Push to Prod') {
+            when {
+                changeset "master"
+            }
+            steps {
+                script {
+                    // Your build steps for the master branch
+                    echo 'Building and pushing to prod Docker repository...'
+                    // Example: sh 'docker build -t prodapp:latest .'
+                    // Example: sh 'docker push sivasankaran64/reactappprod/prodapp:latest'
+                }
+            }
+        }
+    }
+}
