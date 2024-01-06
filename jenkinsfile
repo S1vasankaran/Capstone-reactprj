@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build & Push to Dev') {
             when {
-                changeset "dev"
+                branch "dev"
             }
             steps {
                 script {
@@ -18,7 +18,7 @@ pipeline {
 
         stage('Build & Push to Prod') {
             when {
-                changeset "master"
+                branch "master"
             }
             steps {
                 script {
