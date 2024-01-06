@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build & Push to Dev') {
             when {
-                branch "dev"
+                branch 'dev'
             }
             steps {
                 script {
