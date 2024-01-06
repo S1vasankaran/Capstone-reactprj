@@ -5,7 +5,7 @@ pipeline {
         stage('Build & Push to Dev') {
             steps {
                 script {
-                    if (env.BRANCH_NAME == 'dev') {
+                    if (BRANCH_NAME == 'dev') {
                         echo 'Building and pushing to dev Docker repository...'
                         sh 'docker build -t sivasankaran64/reactappdev/devapp:latest .'
                         sh 'docker push sivasankaran64/reactappdev/devapp:latest'
