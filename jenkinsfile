@@ -19,7 +19,7 @@ pipeline {
         stage('Build & Push to Prod') {
             steps {
                 script {
-                    if (env.BRANCH_NAME == 'master') {
+                    if (BRANCH_NAME == 'master') {
                         echo 'Building and pushing to prod Docker repository...'
                         sh 'docker build -t sivasankaran64/reactappprod/prodapp:latest .'
                         sh 'docker push sivasankaran64/reactappprod/prodapp:latest'
