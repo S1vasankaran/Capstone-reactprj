@@ -1,68 +1,29 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Docker:
 
-## Available Scripts
+Dockerized the application by creating a Dockerfile and created a docker-compose file to use the above image
 
-In the project directory, you can run:
+Bash Scripting:
 
-### `npm start`
+Created two bash scripts for building docker images and deploying the images to server
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Version control:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Pushed the code to github to dev brach (using dockerignore & gitignore files)
 
-### `npm test`
+Docker hub:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Created 2 repos "dev" & "prod" to push images.
 
-### `npm run build`
+Jenkins:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Installed and configured jenkins build steps as per needs to build,push & deploy the application. Connected jenkins to github repo with auto build trigger from both dev & master branch. so, If code pushed to dev branch, docker image must build and pushed to dev repo in docker hub, If dev merged to master, then docker image must be pushed to prod repo in docker hub.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+AWS:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Launched t2.micro instance and deployed the application and configured the security groups as 
+- Whoever has the ip address can access the application
+- Login to server can be made only from my ip address
 
-### `npm run eject`
+Created a monitoring system to check the health status of the application using cloud watch and configured the notifications only if the application goes down.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+https://docs.google.com/document/d/1gGjnwRUwvR5_ueQ8gADWXLd3GTReaIODExERxZEYsMM/edit?usp=sharing
